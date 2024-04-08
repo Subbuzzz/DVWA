@@ -11,5 +11,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Run HawkScan
         uses: stackhawk/hawkscan-action@v2
-        with:
+        with: 
           apiKey: ${{ secrets.HAWK_API_KEY }}
