@@ -1,5 +1,4 @@
 name: ArmorCode
-
 env:
   armorcodehost: https://app.armorcode.com
   product: DVWA
@@ -9,7 +8,7 @@ env:
   buildTool: GITHUB_ACTIONS
   buildNumber: ${{github.run_number}}
   end: 30
-  
+ 
 on:
   # Triggers the workflow on push request events
   push:
