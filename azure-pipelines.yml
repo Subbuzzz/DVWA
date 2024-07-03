@@ -1,0 +1,46 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+name: ArmorCode
+
+env:
+  armorcodehost: https://app.armorcode.com
+  product: DVWA
+  subProduct: Test
+  environment: Staging
+  token: ${{secrets.ARMORCODE_TOKEN}}
+  buildTool: GITHUB_ACTIONS
+  buildNumber: ${{github.run_number}}
+  end: 30
+  
+on:
+  # Triggers the workflow on push request events
+  push:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # ArmorCode Validation Step
+    steps:
+      - name: ArmorCode Validation
+        run: |
+          wget https://app.armorcode.com/static/scripts/slastatus.sh
+          sh slastatus.sh
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
